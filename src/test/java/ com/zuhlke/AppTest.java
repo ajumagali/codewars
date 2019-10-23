@@ -1,19 +1,14 @@
 package  com.zuhlke;
 
-import static com.zuhlke.App.stripComments;
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
+import static com.zuhlke.App.persistence;
+import static com.zuhlke.App.stripComments;
+import static junit.framework.TestCase.assertEquals;
+
+public class AppTest
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
     public void testStripComments()
     {
@@ -31,8 +26,22 @@ public class AppTest
                 "a\n  b\nd",
                 stripComments( "a #b\n  b \nd $e f g", new String[] { "#", "$" } )
         );
-
     }
 
+    @Test
+    public void persistenceSingleDigit() {
+        assertEquals(0, persistence(4));
+    }
+
+    @Test
+    public void persistenceDoubleDigit() {
+        assertEquals(3, persistence(39));
+        assertEquals(2, persistence(25));
+    }
+
+    @Test
+    public void persistenceTripleDigit() {
+        assertEquals(4, persistence(999));
+    }
 
 }
