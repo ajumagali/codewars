@@ -3,6 +3,33 @@ package  com.zuhlke;
 
 public class App
 {
+    public static void main(String[] args) {
+        System.out.print('z' - 'a' + 1);
+    }
+    /**
+     * Your task is to add up letters to one letter.
+     *
+     * The function will be given an array of single character Strings, each one being a letter to add.
+     *
+     * Notes:
+     *  - Letters will always be lowercase.
+     *  - Letters can overflow (see second to last example of the description)
+     *  - If no letters are given, the function should return 'z'
+     */
+    public static String addLetters(String... letters) {
+        int sumOfLetters = 0;
+        if (letters.length == 0)
+            return "z";
+        else {
+            for (String letter : letters) {
+                sumOfLetters += letter.charAt(0) - 'a' + 1;
+            }
+        }
+
+        sumOfLetters %= 26;
+
+        return sumOfLetters == 0 ? "z" : Character.valueOf((char)(sumOfLetters + 'a' - 1)).toString();
+    }
 
     /**
      * Complete the solution so that it strips all text that follows any of a set of comment markers passed in.
